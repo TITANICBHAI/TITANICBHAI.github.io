@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TBTechs — Indie Software Studio</title>
+  <meta name="description" content="TBTechs is an indie software studio building precise, thoughtful applications — AI assistants, productivity tools, and personal utilities." />
+  <meta property="og:title" content="TBTechs — Indie Software Studio" />
+  <meta property="og:description" content="Building precise, thoughtful software. AI assistants, productivity tools, and personal utilities." />
+  <meta property="og:image" content="assets/tbtechs-feature.png" />
+  <meta property="og:url" content="https://titanicbhai.github.io" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TBTechs — Indie Software Studio" />
+  <meta name="twitter:description" content="Building precise, thoughtful software." />
+  <meta name="twitter:image" content="assets/tbtechs-feature.png" />
+  <link rel="icon" type="image/png" href="assets/tbtechs-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080a10;
+      --surface: #0f1117;
+      --surface2: #161a24;
+      --border: rgba(255,255,255,0.06);
+      --border2: rgba(255,255,255,0.12);
+      --accent: #3b82f6;
+      --accent-dim: rgba(59,130,246,0.15);
+      --accent-glow: rgba(59,130,246,0.25);
+      --text: #f0f4ff;
+      --muted: #8892a4;
+      --muted2: #5c6880;
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 64px;
+      background: rgba(8,10,16,0.75);
+      backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      width: 32px; height: 32px; object-fit: contain;
+      border-radius: 8px;
+      background: rgba(59,130,246,0.1);
+      padding: 3px;
+      border: 1px solid rgba(59,130,246,0.2);
+    }
+    .nav-logo span {
+      font-weight: 700; font-size: 1rem; color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.875rem; font-weight: 500;
+      padding: 0.4rem 0.75rem; border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-gh {
+      display: flex; align-items: center; gap: 0.4rem;
+      padding: 0.4rem 0.9rem; border-radius: 8px;
+      background: var(--surface2); border: 1px solid var(--border2);
+      color: var(--text) !important; font-weight: 600 !important;
+      font-size: 0.8rem; transition: border-color 0.15s, background 0.15s !important;
+    }
+    .nav-gh:hover { border-color: var(--accent) !important; background: rgba(59,130,246,0.08) !important; }
+    .nav-gh svg { flex-shrink: 0; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 7rem 2rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: 0.12; mix-blend-mode: luminosity;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,0.18) 0%, transparent 70%),
+        linear-gradient(to bottom, transparent 40%, var(--bg) 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 30%, transparent 80%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .hero-logo {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 88px; height: 88px; border-radius: 22px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      margin-bottom: 2rem;
+      box-shadow: 0 0 40px rgba(59,130,246,0.15), 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .hero-logo img { width: 56px; height: 56px; object-fit: contain; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 0.85rem; border-radius: 999px;
+      border: 1px solid rgba(59,130,246,0.3);
+      background: rgba(59,130,246,0.08);
+      font-size: 0.78rem; font-weight: 600; color: var(--accent);
+      letter-spacing: 0.04em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-tag-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+    h1 {
+      font-size: clamp(2.75rem, 7vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+    h1 .accent {
+      color: var(--accent);
+      -webkit-text-fill-color: transparent;
+      background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .hero-desc {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem; border-radius: 10px;
+      font-size: 0.9rem; font-weight: 600;
+      text-decoration: none; transition: all 0.2s; cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 0 24px var(--accent-glow), 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .btn-primary:hover {
+      background: #2563eb;
+      box-shadow: 0 0 36px var(--accent-glow), 0 4px 16px rgba(0,0,0,0.3);
+      transform: translateY(-1px);
+    }
+    .btn-ghost {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border2);
+    }
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-1px);
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      color: var(--muted2); font-size: 0.75rem;
+      animation: float 3s ease-in-out infinite;
+      text-decoration: none;
+    }
+    @keyframes float {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-6px); }
+    }
+
+    /* ── SECTION ── */
+    .section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.1; margin-bottom: 1rem;
+    }
+    .section-desc {
+      color: var(--muted); font-size: 1.05rem;
+      max-width: 500px; line-height: 1.7;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px; background: var(--border);
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    /* ── PILLARS ── */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 4rem;
+    }
+    .pillar {
+      background: var(--bg);
+      padding: 2.5rem 2rem;
+      transition: background 0.2s;
+    }
+    .pillar:hover { background: var(--surface); }
+    .pillar-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(59,130,246,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.25rem;
+    }
+    .pillar h3 {
+      font-size: 1.1rem; font-weight: 700;
+      margin-bottom: 0.5rem; letter-spacing: -0.01em;
+    }
+    .pillar p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── PROJECTS HEADER ── */
+    .projects-header {
+      display: flex; flex-wrap: wrap;
+      align-items: flex-end; justify-content: space-between;
+      gap: 1rem; margin-bottom: 3rem;
+    }
+    .projects-header a {
+      font-size: 0.875rem; font-weight: 600; color: var(--accent);
+      text-decoration: none; display: flex; align-items: center; gap: 0.3rem;
+      transition: gap 0.2s;
+    }
+    .projects-header a:hover { gap: 0.6rem; }
+
+    /* ── PROJECT CARDS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 1.25rem;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      position: relative;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(59,130,246,0.04) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.3s;
+      pointer-events: none; z-index: 0;
+    }
+    .project-card:hover {
+      border-color: rgba(59,130,246,0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(59,130,246,0.1);
+    }
+    .project-card:hover::before { opacity: 1; }
+    .card-img {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: var(--surface2);
+      position: relative;
+    }
+    .card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease, opacity 0.3s;
+      opacity: 0.85;
+    }
+    .project-card:hover .card-img img { transform: scale(1.04); opacity: 1; }
+    .card-img::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 40%; background: linear-gradient(to top, var(--surface), transparent);
+    }
+    .card-body {
+      padding: 1.5rem 1.75rem 1.75rem;
+      position: relative; z-index: 1;
+    }
+    .card-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .tag {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-dim);
+      border: 1px solid rgba(59,130,246,0.2);
+      padding: 0.2rem 0.6rem; border-radius: 6px;
+    }
+    .card-title {
+      font-size: 1.25rem; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .card-desc {
+      font-size: 0.9rem; color: var(--muted);
+      line-height: 1.6; margin-bottom: 1.25rem;
+    }
+    .card-links { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+    .card-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.8rem; font-weight: 600; text-decoration: none;
+      padding: 0.4rem 0.85rem; border-radius: 8px;
+      transition: all 0.15s;
+    }
+    .card-link-live {
+      background: var(--accent); color: #fff;
+    }
+    .card-link-live:hover { background: #2563eb; }
+    .card-link-gh {
+      color: var(--muted); background: var(--surface2);
+      border: 1px solid var(--border2);
+    }
+    .card-link-gh:hover { color: var(--text); border-color: var(--border2); }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      padding: 7rem 2rem;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 400px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(59,130,246,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-box {
+      position: relative; z-index: 1;
+      max-width: 600px; margin: 0 auto;
+    }
+    .cta-box h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900; letter-spacing: -0.03em;
+      line-height: 1.1; margin-bottom: 1rem;
+    }
+    .cta-box p { color: var(--muted); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between;
+      gap: 1rem;
+    }
+    .footer-brand {
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .footer-brand img { width: 28px; height: 28px; object-fit: contain; opacity: 0.5; }
+    .footer-brand span { font-size: 0.875rem; color: var(--muted2); font-weight: 500; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: var(--muted2); text-decoration: none; font-size: 0.85rem; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 1rem; }
+      .nav-links a:not(.nav-gh) { display: none; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 2.4rem; }
+    }
+
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="assets/tbtechs-logo.png" alt="TBTechs" />
+      <span>TBTechs</span>
+    </a>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="https://github.com/TITANICBHAI" target="_blank" rel="noopener" class="nav-gh">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="assets/tbtechs-hero.png" alt="" aria-hidden="true" />
+    </div>
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img src="assets/tbtechs-logo.png" alt="TBTechs logo" />
+      </div>
+      <div class="hero-tag">
+        <div class="hero-tag-dot"></div>
+        Indie Software Studio
+      </div>
+      <h1>Engineering <span class="accent">clarity</span><br />in a complex world.</h1>
+      <p class="hero-desc">We build precise, thoughtful applications. AI assistants, productivity tools, and personal utilities — crafted with care, no bloat.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Our Projects
+        </a>
+        <a href="https://github.com/TITANICBHAI" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          View GitHub
+        </a>
+      </div>
+    </div>
+
+    <a href="#about" class="hero-scroll" aria-label="Scroll down">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>
+    </a>
+  </section>
+
+  <!-- ABOUT / PILLARS -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-eyebrow reveal">Our approach</div>
+      <h2 class="section-title reveal reveal-delay-1">Built different.<br />On purpose.</h2>
+      <p class="section-desc reveal reveal-delay-2">We're a small studio obsessed with the craft. Every line of code, every pixel — deliberate.</p>
+
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="pillar-icon">⚡</div>
+          <h3>Electric Speed</h3>
+          <p>We optimize relentlessly. Fast startup, fast responses, fast UI. Every millisecond matters when people use your tools every day.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-1">
+          <div class="pillar-icon">🎯</div>
+          <h3>Singular Focus</h3>
+          <p>Each app solves one problem, exceptionally. No feature bloat. No dashboards for the sake of dashboards. Clarity is a feature.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-2">
+          <div class="pillar-icon">🔓</div>
+          <h3>Open by Default</h3>
+          <p>Everything we build is open source. Inspect it, contribute to it, fork it. We believe transparent software builds better trust.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="projects-header">
+        <div>
+          <div class="section-eyebrow reveal">Our work</div>
+          <h2 class="section-title reveal reveal-delay-1">Shipped apps</h2>
+        </div>
+        <a href="https://github.com/TITANICBHAI" target="_blank" rel="noopener" class="reveal">
+          All repositories
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Aria Prime -->
+        <a href="https://github.com/TITANICBHAI/aria-prime" target="_blank" rel="noopener" class="project-card reveal">
+          <div class="card-img">
+            <img src="assets/aria-prime-feature.png" alt="Aria Prime" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag">AI</span>
+              <span class="tag">Assistant</span>
+            </div>
+            <div class="card-title">Aria Prime</div>
+            <p class="card-desc">An AI-powered assistant built for deep context awareness and seamless task execution. Designed to reduce friction between you and the models you rely on.</p>
+            <div class="card-links" onclick="event.preventDefault()">
+              <a href="https://github.com/TITANICBHAI/aria-prime" target="_blank" rel="noopener" class="card-link card-link-gh">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </a>
+
+        <!-- FocusFlow -->
+        <a href="https://focusflowapp.pages.dev" target="_blank" rel="noopener" class="project-card reveal reveal-delay-1">
+          <div class="card-img">
+            <img src="assets/focusflow-feature.png" alt="FocusFlow" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag">Web</span>
+              <span class="tag">Productivity</span>
+            </div>
+            <div class="card-title">FocusFlow</div>
+            <p class="card-desc">A distraction-free productivity web app for entering deep work and staying there. Built for professionals who need quiet, focused time.</p>
+            <div class="card-links" onclick="event.preventDefault()">
+              <a href="https://focusflowapp.pages.dev" target="_blank" rel="noopener" class="card-link card-link-live">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Live App
+              </a>
+              <a href="https://github.com/TITANICBHAI/FocusFlow" target="_blank" rel="noopener" class="card-link card-link-gh">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </a>
+
+        <!-- FocusFlow JVM -->
+        <a href="https://titanicbhai.github.io/FocusFlow-jvm/" target="_blank" rel="noopener" class="project-card reveal">
+          <div class="card-img">
+            <img src="assets/focusflow-jvm-feature.png" alt="FocusFlow JVM" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag">Kotlin</span>
+              <span class="tag">Android</span>
+            </div>
+            <div class="card-title">FocusFlow JVM</div>
+            <p class="card-desc">FocusFlow reimagined for native platforms. Built in Kotlin, running on Android and desktop with full JVM performance and native system integration.</p>
+            <div class="card-links" onclick="event.preventDefault()">
+              <a href="https://titanicbhai.github.io/FocusFlow-jvm/" target="_blank" rel="noopener" class="card-link card-link-live">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                View Project
+              </a>
+              <a href="https://github.com/TITANICBHAI/FocusFlow-jvm" target="_blank" rel="noopener" class="card-link card-link-gh">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </a>
+
+        <!-- PeopleMemory -->
+        <a href="https://peoplememory.pages.dev/" target="_blank" rel="noopener" class="project-card reveal reveal-delay-1">
+          <div class="card-img">
+            <img src="assets/peoplememory-feature.png" alt="PeopleMemory" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag">Utility</span>
+              <span class="tag">Personal</span>
+            </div>
+            <div class="card-title">PeopleMemory</div>
+            <p class="card-desc">A personal relationship manager that helps you remember the people in your life — their context, their stories, and what matters to them.</p>
+            <div class="card-links" onclick="event.preventDefault()">
+              <a href="https://peoplememory.pages.dev/" target="_blank" rel="noopener" class="card-link card-link-live">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Live App
+              </a>
+              <a href="https://github.com/TITANICBHAI/PeopleMemory" target="_blank" rel="noopener" class="card-link card-link-gh">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-glow" aria-hidden="true"></div>
+    <div class="cta-box reveal">
+      <h2>Open to the world.</h2>
+      <p>All of our work is open source. Browse, contribute, or star what you find useful. We build in public.</p>
+      <div class="cta-buttons">
+        <a href="https://github.com/TITANICBHAI" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          Visit GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/tbtechs-logo.png" alt="TBTechs" />
+        <span>&copy; 2025 TBTechs &mdash; crafted with precision.</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/TITANICBHAI/aria-prime" target="_blank" rel="noopener">Aria Prime</a>
+        <a href="https://focusflowapp.pages.dev" target="_blank" rel="noopener">FocusFlow</a>
+        <a href="https://peoplememory.pages.dev" target="_blank" rel="noopener">PeopleMemory</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
