@@ -295,6 +295,7 @@
       display: block;
       transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
       position: relative;
+      cursor: pointer;
     }
     .project-card::before {
       content: '';
@@ -529,7 +530,7 @@
       <div class="projects-grid">
 
         <!-- Aria Prime -->
-        <a href="https://github.com/TITANICBHAI/aria-prime" target="_blank" rel="noopener" class="project-card reveal">
+        <div onclick="window.open('https://github.com/TITANICBHAI/aria-prime','_blank')" class="project-card reveal">
           <div class="card-img">
             <img src="assets/aria-prime-feature.png" alt="Aria Prime" loading="lazy" />
           </div>
@@ -541,17 +542,17 @@
             </div>
             <div class="card-title">Aria Prime</div>
             <p class="card-desc">On-device AI agent for Android. Runs quantized LLMs locally via a JNI bridge to llama.cpp with OpenCL GPU acceleration. Custom 1,063-line AgentLoop, SAM2 vision, RL policy network, AccessibilityService screen reading. Not a cloud chatbot.</p>
-            <div class="card-links" onclick="event.preventDefault()">
-              <a href="https://github.com/TITANICBHAI/aria-prime" target="_blank" rel="noopener" class="card-link card-link-gh">
+            <div class="card-links">
+              <a href="https://github.com/TITANICBHAI/aria-prime" target="_blank" rel="noopener" class="card-link card-link-gh" onclick="event.stopPropagation()">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
                 GitHub
               </a>
             </div>
           </div>
-        </a>
+        </div>
 
         <!-- FocusFlow -->
-        <a href="https://focusflowapp.pages.dev" target="_blank" rel="noopener" class="project-card reveal reveal-delay-1">
+        <div onclick="window.open('https://focusflowapp.pages.dev','_blank')" class="project-card reveal reveal-delay-1">
           <div class="card-img">
             <img src="assets/focusflow-feature.png" alt="FocusFlow" loading="lazy" />
           </div>
@@ -562,21 +563,21 @@
             </div>
             <div class="card-title">FocusFlow</div>
             <p class="card-desc">Hard-enforcement Android app blocker. Five independent layers: AccessibilityService + null-routing VPN + Device Admin + System Guard + SHA-256 native PIN. Bypassing it is not a single tap. Free.</p>
-            <div class="card-links" onclick="event.preventDefault()">
-              <a href="https://focusflowapp.pages.dev" target="_blank" rel="noopener" class="card-link card-link-live">
+            <div class="card-links">
+              <a href="https://focusflowapp.pages.dev" target="_blank" rel="noopener" class="card-link card-link-live" onclick="event.stopPropagation()">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 Website
               </a>
-              <a href="https://github.com/TITANICBHAI/FocusFlow" target="_blank" rel="noopener" class="card-link card-link-gh">
+              <a href="https://github.com/TITANICBHAI/FocusFlow" target="_blank" rel="noopener" class="card-link card-link-gh" onclick="event.stopPropagation()">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
                 GitHub
               </a>
             </div>
           </div>
-        </a>
+        </div>
 
         <!-- FocusFlow JVM -->
-        <a href="https://titanicbhai.github.io/FocusFlow-jvm/" target="_blank" rel="noopener" class="project-card reveal">
+        <div onclick="window.open('https://titanicbhai.github.io/FocusFlow-jvm/','_blank')" class="project-card reveal">
           <div class="card-img">
             <img src="assets/focusflow-jvm-feature.png" alt="FocusFlow JVM" loading="lazy" />
           </div>
@@ -588,21 +589,21 @@
             </div>
             <div class="card-title">FocusFlow JVM</div>
             <p class="card-desc">Windows focus enforcement via Kotlin + Compose Multiplatform. Kills blocked processes with Win32 GetForegroundWindow() + JNA, adds live firewall rules via PowerShell. Packages as a standalone EXE or MSI. Real blocking.</p>
-            <div class="card-links" onclick="event.preventDefault()">
-              <a href="https://titanicbhai.github.io/FocusFlow-jvm/" target="_blank" rel="noopener" class="card-link card-link-live">
+            <div class="card-links">
+              <a href="https://titanicbhai.github.io/FocusFlow-jvm/" target="_blank" rel="noopener" class="card-link card-link-live" onclick="event.stopPropagation()">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 View Project
               </a>
-              <a href="https://github.com/TITANICBHAI/FocusFlow-jvm" target="_blank" rel="noopener" class="card-link card-link-gh">
+              <a href="https://github.com/TITANICBHAI/FocusFlow-jvm" target="_blank" rel="noopener" class="card-link card-link-gh" onclick="event.stopPropagation()">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
                 GitHub
               </a>
             </div>
           </div>
-        </a>
+        </div>
 
         <!-- PeopleMemory -->
-        <a href="https://peoplememory.pages.dev/" target="_blank" rel="noopener" class="project-card reveal reveal-delay-1">
+        <div onclick="window.open('https://peoplememory.pages.dev/','_blank')" class="project-card reveal reveal-delay-1">
           <div class="card-img">
             <img src="assets/peoplememory-feature.png" alt="PeopleMemory" loading="lazy" />
           </div>
@@ -614,18 +615,18 @@
             </div>
             <div class="card-title">PeopleMemory</div>
             <p class="card-desc">100% offline private relationship manager. SHA-256 PIN vault, trust scoring (0–10), relationship health engine, voice interaction notes. Not one byte leaves the device. Zero tracking, zero account required.</p>
-            <div class="card-links" onclick="event.preventDefault()">
-              <a href="https://peoplememory.pages.dev/" target="_blank" rel="noopener" class="card-link card-link-live">
+            <div class="card-links">
+              <a href="https://peoplememory.pages.dev/" target="_blank" rel="noopener" class="card-link card-link-live" onclick="event.stopPropagation()">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 Website
               </a>
-              <a href="https://github.com/TITANICBHAI/PeopleMemory" target="_blank" rel="noopener" class="card-link card-link-gh">
+              <a href="https://github.com/TITANICBHAI/PeopleMemory" target="_blank" rel="noopener" class="card-link card-link-gh" onclick="event.stopPropagation()">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
                 GitHub
               </a>
             </div>
           </div>
-        </a>
+        </div>
 
       </div>
     </div>
